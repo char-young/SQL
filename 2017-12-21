@@ -1,0 +1,49 @@
+SELECT last_name as "Name"
+    , salary as 급여
+    , salary +200 as "내년급여" --샐러리가 200 올라간만큼 출력
+    , salary *1.02 as "내년급여" 
+FROM EMPLOYEES;
+
+--sysdate 오늘의 날짜 
+SELECT sysdate + 100 
+FROM dual; --dual 한건만 출력하고 싶을 때 사용 
+
+select last_name
+from employees
+where commission_pct is null; --null은 알 수 없는 값이기 때문에 비교 할 수 없다.
+
+--distinct 중복된 값 제거
+select distinct job_id
+from employees;
+
+--연결 연산자 ||
+select last_name ||job_id as "Employees"
+from employees;
+
+--연결 연산자 ||
+select last_name ||job_id ||'업무를 하고 있습니다.' as "Employees"
+from employees;
+
+select 10+20 from dual;
+select 10||'abv' from dual; --문자열이 들어가면 ||을 이용 숫자만이면 + 이용
+
+
+--문자열의 경우 대소문자 구분을 무조건 해주어야한다. 
+--구분해주지 않을 경우 검색이 되지 않는다.
+select last_name
+    ,job_id
+    ,department_id
+from employees
+where last_name='Whalen';
+
+--initcap() 첫번째 글자를 대문자로 바꿔줌
+select last_name
+    ,job_id
+    ,department_id
+from employees
+where last_name= initcap('whalen');
+
+--년도는 되도록이면 4자리로 할 것
+SELECT last_name
+FROM employees
+WHERE hire_date = '1996/02/17' ;
